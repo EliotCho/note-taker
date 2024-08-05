@@ -4,10 +4,10 @@ const appExpress = require("express");
 const notesRouter = require("./htmlRoutes");
 
 // call express
-const app = appExpress();
+const appApp = appExpress();
 
 // route to notes
-app.use("/notes", notesRouter);
+appApp.use("/notes", notesRouter);
 
 // export the module
-module.exports = app;
+module.exports = appApp;
