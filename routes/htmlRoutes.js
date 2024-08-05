@@ -20,14 +20,14 @@ note.post("/", (req, res) => {
     const addNote = {
       title,
       text,
-      id 
+      id,
     };
     // write note information to db.json
     writeToFile(addNote, "./db/db.json");
     // send a response to the client
-    res.json("Note added successfully");
+    res.json("Note added successfully yay");
   } else {
-    res.error("Note adding error");
+    res.error("Note adding error nay");
   }
 });
 
@@ -37,13 +37,14 @@ note.delete("/:id", (req, res) => {
   // gets id from request parameters
   const id = req.params.id;
   // gets all notes from db.json
-  readFromFile("./db/db.json").then((data) => JSON.parse(data))
-  .then((json) => {
-    // filters out the note with the matching id
-    const result = json.filter((note) => note.id !== id);
-    readAndAppend("./db/db.json", result);
-    res.json("Note deleted!");
-  });
+  readFromFile("./db/db.json")
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // filters out the note with the matching id
+      const result = json.filter((note) => note.id !== id);
+      readAndAppend("./db/db.json", result);
+      res.json("Note deleted yay");
+    });
 });
 
 module.exports = note;
