@@ -1,0 +1,13 @@
+const app = require('express');
+
+// Import our files containing our routes
+const notesRouter = require('./notes');
+
+// call express
+const app = express();
+
+// route to notes
+app.use('/notes', notesRouter);
+
+// export the module
+module.exports = app;
