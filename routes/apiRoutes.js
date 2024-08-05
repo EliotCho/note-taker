@@ -1,7 +1,7 @@
 const app = require('express');
 
 // Import our files containing our routes
-const notesRouter = require('./notes');
+const notesRouter = require('./htmlRoutes');
 
 // call express
 const app = express();
