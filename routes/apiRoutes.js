@@ -1,13 +1,13 @@
-const app = require('express');
+const appExpress = require("express");
 
 // Import our files containing our routes
-const notesRouter = require('./htmlRoutes');
+const notesRouter = require("./htmlRoutes");
 
 // call express
-const app = express();
+const app = appExpress();
 
 // route to notes
-app.use('/notes', notesRouter);
+app.use("/notes", notesRouter);
 
 // export the module
 module.exports = app;
