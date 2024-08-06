@@ -23,10 +23,13 @@ note.post("/", (req, res) => {
       id,
     };
     // write note information to db.json
-    writeToFile(addNote, "./db/db.json");
+    // readAndAppend(addNote, "./db/db.json");
+    writeToFile("./db/db.json", addNote); // this is wrong? why does it only add one note?
     // send a response to the client
+    console.log("Note added successfully yay");
     res.json("Note added successfully yay");
   } else {
+    console.error("Note adding error nay");
     res.error("Note adding error nay");
   }
 });
@@ -41,9 +44,11 @@ note.delete("/:id", (req, res) => {
     .then((data) => JSON.parse(data))
     .then((json) => {
       // filters out the note with the matching id
-      const result = json.filter((note) => note.id != id);
-      readAndAppend("./db/db.json", result);
+      const result = json.filter((note) => note.id !== id);
+      // readAndAppend(result, "./db/db.json"); // this is wrong
+      writeToFile("./db/db.json", result);
       res.json("Note deleted yay");
+      console.log("Note deleted yay");
     });
 });
 
