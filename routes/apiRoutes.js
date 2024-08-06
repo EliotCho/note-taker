@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express").Router();
 
 // Import our files containing our routes
 const noteRoute = require("./htmlRoutes");

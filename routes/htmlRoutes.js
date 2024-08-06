@@ -41,7 +41,7 @@ note.delete("/:id", (req, res) => {
     .then((data) => JSON.parse(data))
     .then((json) => {
       // filters out the note with the matching id
-      const result = json.filter((note) => note.id !== id);
+      const result = json.filter((note) => note.id != id);
       readAndAppend("./db/db.json", result);
       res.json("Note deleted yay");
     });
