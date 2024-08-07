@@ -23,8 +23,11 @@ note.post("/", (req, res) => {
       id,
     };
     // write note information to db.json
-    // readAndAppend(addNote, "./db/db.json");
-    writeToFile("./db/db.json", addNote); // this is wrong? why does it only add one note?
+    console.log(addNote);
+
+    readAndAppend(addNote, "./db/db.json");
+
+    // writeToFile("./db/db.json", addNote); // this is wrong? why does it only add one note?
     // send a response to the client
     console.log("Note added successfully yay");
     res.json("Note added successfully yay");
@@ -38,7 +41,8 @@ note.post("/", (req, res) => {
 // id is required to delete a note
 note.delete("/:id", (req, res) => {
   // gets id from request parameters
-  const id = req.params.id;
+  const id = Number(req.params.id);
+
   // gets all notes from db.json
   readFromFile("./db/db.json")
     .then((data) => JSON.parse(data))
